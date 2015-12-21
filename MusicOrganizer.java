@@ -43,7 +43,7 @@ public class MusicOrganizer
      */
     public void listFile(int index)
     {
-        if(index >= 0 && index < files.size()) {
+        if(validIndex(index)) {
             String filename = files.get(index);
             System.out.println(filename);
         }
@@ -55,7 +55,7 @@ public class MusicOrganizer
      */
     public void removeFile(int index)
     {
-        if(index >= 0 && index < files.size()) {
+        if(validIndex(index)) {
             files.remove(index);
         }
     }
@@ -68,5 +68,19 @@ public class MusicOrganizer
             System.out.println("El índice introducido no es correcto");
             System.out.println("Se debe introducir un numero desde 0 a " + (files.size() - 1));
         }
+    }
+
+    /**
+     * Metodo que devuelve un valor booleano en función de si su parámetro entero es un índice válido o no para el atributo files.
+     */
+    public boolean validIndex(int index)
+    {
+        boolean valorCorrecto = false;
+
+        if (index >= 0 && index < files.size()) {
+            valorCorrecto = true;
+        }
+
+        return valorCorrecto;
     }
 }
